@@ -1,0 +1,308 @@
+[
+{
+    "name": "Region",
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "regionName",
+            "fieldType": "String",
+            "fieldLength": 256,
+            "useAsName": true,
+            "testValues" : ["South-east Asia", "Africa", "Eastern Europe"],
+            "uniqueSearch": true
+        }
+    ],
+    "changelogDate": "20180114182841",
+    "entityTableName": "region",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "angularJSSuffix": "mySuffix"
+},
+{
+    "name": "Country",
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "region",
+            "otherEntityName": "region",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "country"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "countryName",
+            "fieldType": "String",
+            "fieldLength": 256,
+            "useAsName": true,
+            "faker": "address.country",
+            "uniqueSearch": true
+        }
+    ],
+    "changelogDate": "20180114182842",
+    "entityTableName": "country",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "angularJSSuffix": "mySuffix"
+},
+
+{
+    "name": "Location",
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "country",
+            "otherEntityName": "country",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "location"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "streetAddress",
+            "fieldType": "String",
+            "fieldLength": 256,
+            "useAsName": true,
+            "faker": "address.streetAddress",
+            "uniqueSearch": true
+        },
+        {
+            "fieldName": "postalCode",
+            "fieldType": "String",
+            "fieldLength": 45,
+            "faker": "address.zipCode"
+        },
+        {
+            "fieldName": "city",
+            "fieldType": "String",
+            "fieldLength": 256,
+            "faker": "address.city"
+        },
+        {
+            "fieldName": "stateProvince",
+            "fieldType": "String",
+            "fieldLength": 45,
+            "faker": "address.state"
+        }
+    ],
+    "changelogDate": "20180114182843",
+    "javadoc": "not an ignored comment",
+    "entityTableName": "location",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "angularJSSuffix": "mySuffix"
+},
+
+{
+    "name": "Department",
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "location",
+            "otherEntityName": "location",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "department"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "javadoc": "A relationship",
+            "relationshipName": "employee",
+            "otherEntityName": "employee",
+            "otherEntityRelationshipName": "department"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "departmentName",
+            "fieldType": "String",
+            "fieldLength": 256,
+            "useAsName": true,
+            "faker": "name.jobArea",
+            "uniqueSearch": true
+        }
+    ],
+    "changelogDate": "20180114182844",
+    "entityTableName": "department",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "angularJSSuffix": "mySuffix"
+},
+
+{
+    "name": "Employee",
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "department",
+            "otherEntityName": "department",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "job",
+            "otherEntityName": "job",
+            "otherEntityRelationshipName": "employee"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "manager",
+            "otherEntityName": "employee",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "firstName",
+            "javadoc": "The firstname attribute.",
+            "fieldType": "String",
+            "fieldLength": 45,
+            "useAsName": true,
+            "faker": "name.firstName",
+            "uniqueSearch": true
+        },
+        {
+            "fieldName": "lastName",
+            "fieldType": "String",
+            "fieldLength": 45,
+            "useAsName": true,
+            "faker": "name.lastName"
+        },
+        {
+            "fieldName": "email",
+            "fieldType": "String",
+            "fieldLength": 256,
+            "faker": "internet.email"
+        },
+        {
+            "fieldName": "phoneNumber",
+            "fieldType": "String",
+            "fieldLength": 45,
+            "faker": "phone.phoneNumber"
+        },
+        {
+            "fieldName": "hireDate",
+            "fieldType": "ZonedDateTime",
+            "faker": "date.past"
+        },
+        {
+            "fieldName": "salary",
+            "fieldType": "Long",
+            "faker": "random.number"
+        },
+        {
+            "fieldName": "commissionPct",
+            "fieldType": "Long",
+            "faker": "random.number"
+        }
+    ],
+    "changelogDate": "20180114182846",
+    "javadoc": "The Employee entity.",
+    "entityTableName": "employee",
+    "dto": "mapstruct",
+    "pagination": "infinite-scroll",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "angularJSSuffix": "mySuffix"
+},
+
+{
+    "name": "Job",
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "employee",
+            "otherEntityName": "employee",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "job",
+            "relationshipName": "task",
+            "otherEntityName": "task",
+            "otherEntityField": "title",
+            "ownerSide": true
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "jobTitle",
+            "fieldType": "String",
+            "fieldLength": 256,
+            "useAsName": true,
+            "faker": "name.jobTitle",
+            "uniqueSearch": true
+        },
+        {
+            "fieldName": "minSalary",
+            "fieldType": "Long",
+            "faker": "random.number"
+        },
+        {
+            "fieldName": "maxSalary",
+            "fieldType": "Long",
+            "faker": "random.number"
+        }
+    ],
+    "changelogDate": "20180114182847",
+    "entityTableName": "job",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "angularJSSuffix": "mySuffix"
+},
+
+{
+    "name": "Task",
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "job",
+            "otherEntityName": "job",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "task"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "title",
+            "fieldType": "String",
+            "fieldLength": 45,
+            "useAsName": true,
+            "faker": "lorem.sentence",
+            "uniqueSearch": true
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String",
+            "fieldLength": 1024,
+            "faker": "lorem.paragraph"
+        }
+    ],
+    "changelogDate": "20180114182845",
+    "javadoc": "Task entity.\n@author The JHipster team.",
+    "entityTableName": "task",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "angularJSSuffix": "mySuffix"
+}]

@@ -1,0 +1,56 @@
+POST    /auth                      controllers.SecurityController.login()
+POST    /logout                     controllers.SecurityController.logout()
+GET    /account                     controllers.SecurityController.account()
+POST    /signup                     controllers.SecurityController.signup()
+
+
+GET    /region                     v1.api.RegionController.find
+POST   /region                     v1.api.RegionController.create
+
+GET    /region/:id                 v1.api.RegionController.show(id)
+PUT    /region/:id                v1.api.RegionController.update(id)
+
+
+GET    /country                     v1.api.CountryController.find
+POST   /country                     v1.api.CountryController.create
+
+GET    /country/:id                 v1.api.CountryController.show(id)
+PUT    /country/:id                v1.api.CountryController.update(id)
+
+
+GET    /location                     v1.api.LocationController.find
+POST   /location                     v1.api.LocationController.create
+
+GET    /location/:id                 v1.api.LocationController.show(id)
+PUT    /location/:id                v1.api.LocationController.update(id)
+
+
+GET    /department                     v1.api.DepartmentController.find
+POST   /department                     v1.api.DepartmentController.create
+
+GET    /department/:id                 v1.api.DepartmentController.show(id)
+PUT    /department/:id                v1.api.DepartmentController.update(id)
+
+
+GET    /employee                     v1.api.EmployeeController.find
+POST   /employee                     v1.api.EmployeeController.create
+
+GET    /employee/:id                 v1.api.EmployeeController.show(id)
+PUT    /employee/:id                v1.api.EmployeeController.update(id)
+
+
+GET    /job                     v1.api.JobController.find
+POST   /job                     v1.api.JobController.create
+
+GET    /job/:id                 v1.api.JobController.show(id)
+PUT    /job/:id                v1.api.JobController.update(id)
+
+
+GET    /task                     v1.api.TaskController.find
+POST   /task                     v1.api.TaskController.create
+
+GET    /task/:id                 v1.api.TaskController.show(id)
+PUT    /task/:id                v1.api.TaskController.update(id)
+
+
+
